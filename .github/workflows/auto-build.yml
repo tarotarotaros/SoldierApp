@@ -1,5 +1,5 @@
 # GitHub Actionsの名前
-name: Build .NET 7.0
+name: AutoBuild
 # GitHub Actionsを実行させたい動作
 on:
   # 今回はpush時に実行させる 
@@ -7,22 +7,19 @@ on:
 # 自動化
 jobs:
   build:
-    # GitHub Actionsで動作させる仮想OS環境(今回はubuntuを指定)
-    runs-on: ubuntu-latest
-    # 自動化する動作
+    runs-on: windows-latest
     steps:
       # プロジェクトをチェックアウトする
       - name: checkout
         uses: actions/checkout@v2
      # .Net のRuntimeを仮想OSにインストールする
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          # インストール.netのバージョンを指定(今回は.net6.0を指定) 
-          dotnet-version: 7.0.x
-      # プロジェクトで必要なライブラリなどをインストールする
-      - name: Restore dependencies
-        run: dotnet restore
-      # ビルドを行う(同時にコーティング規約の静的チェックを行う)
-      - name: DotNet Build Restore
-        run: dotnet build --no-restore /warnaserror
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v7
+      with:
+        dotnet-version: 7.0.0
+    # プロジェクトで必要なライブラリなどをインストールする
+    - name: Restore dependencies
+      run: dotnet restore
+    # ビルドを行う(同時にコーティング規約の静的チェックを行う)
+    - name: DotNet Build Restore
+      run: dotnet build --configuration Release
