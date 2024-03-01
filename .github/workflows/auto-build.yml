@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./    
     steps:
       # プロジェクトをチェックアウトする
       - name: checkout
@@ -24,4 +27,4 @@ jobs:
       #   run: dotnet restore
       # ビルドを行う(同時にコーティング規約の静的チェックを行う)
       - name: DotNet Build Restore
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release ./DataSoldier.sln
