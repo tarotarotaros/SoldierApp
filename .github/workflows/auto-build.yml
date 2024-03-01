@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           # インストール.netのバージョンを指定(今回は.net6.0を指定) 
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
       # プロジェクトで必要なライブラリなどをインストールする
       - name: Restore dependencies
         run: dotnet restore
