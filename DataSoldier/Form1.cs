@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace DataSoldier
 {
-    public partial class Form1 : MaterialForm
+    public partial class Form1 : DesignedViewBase
     {
 
         /// <summary>
@@ -21,13 +21,6 @@ namespace DataSoldier
         public Form1()
         {
             InitializeComponent();
-
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
 
 
             var rawAPI = new RawDataRepository();
@@ -72,8 +65,25 @@ namespace DataSoldier
 
         private void SelectRawButton_Click(object sender, EventArgs e)
         {
+            var rawAPI = new RawDataRepository();
+
+            var rawType = new RawTypeValue(RawType.r1_全法令);
+            var rawListXMLText = rawAPI.GetRawList(rawType.ToCodeValue());
+
+            var rawListXML = XDocument.Parse(rawListXMLText);
+            var rawList = rawListXML.Descendants("LawNameListInfo").ToList().Select(x =>
+            {
+                return new RawName(x.Element("LawId").Value,
+                                   x.Element("LawName").Value,
+                                   x.Element("LawNo").Value,
+                                   x.Element("PromulgationDate").Value
+                                   );
+            }).ToList();
+
+            var selectDict = rawList.ToDictionary(x => x.ID, x => x.Name);
+
             var v = new SelectorView();
-            var p = new SelectorPresenter(v);
+            var p = new SelectorPresenter(v, "法律選択", selectDict);
 
 
             try

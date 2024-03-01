@@ -8,13 +8,19 @@
 
         public SelectResult SelectResult { get; private set; }
 
-        public SelectorPresenter(ISelectorView selectorView)
+        public SelectorPresenter(ISelectorView selectorView, string title, Dictionary<string, string> selectDict)
         {
             _view = selectorView;
             _view.OKClicked += OnOKClicked;
             _view.CancelClicked += OnCancelClicked;
 
+            _view.Title = title;
+            _view.SelectItems = selectDict;
+
             SelectResult = SelectResult.NO_SELECT;
+
+
+
         }
 
         private void OnOKClicked(object sender, EventArgs e)

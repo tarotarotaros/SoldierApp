@@ -9,12 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialSkin.NET5" Version="1.0.2" />
+    <None Remove="UI\Control\4xdnzbod.3pt~" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj" />
   </ItemGroup>
 
 </Project>

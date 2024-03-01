@@ -1,4 +1,6 @@
-﻿using MaterialSkin;
+﻿using DataSoldier.UI;
+using Domain.Model.Raw;
+using MaterialSkin;
 using MaterialSkin.Controls;
 
 namespace DataSoldier
@@ -9,10 +11,33 @@ namespace DataSoldier
         event EventHandler OKClicked;
         event EventHandler CancelClicked;
         void CloseView();
+        string Title { set; }
+        Dictionary<string, string> SelectItems { set; }
     }
 
-    public partial class SelectorView : MaterialForm, ISelectorView
+    public partial class SelectorView : DesignedViewBase, ISelectorView
     {
+        public string Title { set => this.Text = value; }
+        public Dictionary<string, string> SelectItems
+        {
+            set
+            {
+                this.SelectDataGrid.Columns.Add("ID", "ID");
+                this.SelectDataGrid.Columns.Add("値", "値");
+
+                foreach (var item in value) 
+                {
+                    var index = this.SelectDataGrid.Rows.Add();
+
+
+
+                    this.SelectDataGrid[0, index].Value = item.Key;
+                    this.SelectDataGrid[1, index].Value = item.Value;
+                }
+
+            }
+        }
+
         public event EventHandler OKClicked;
         public event EventHandler CancelClicked;
 
@@ -21,11 +46,6 @@ namespace DataSoldier
             InitializeComponent();
 
 
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
         }
 
         public void CloseView()
@@ -33,12 +53,12 @@ namespace DataSoldier
             this.Close();
         }
 
-        private void CancelButton1_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             CancelClicked(this, new EventArgs());
         }
 
-        private void OKButton_Click_1(object sender, EventArgs e)
+        private void OKButton_Click(object sender, EventArgs e)
         {
             OKClicked(this, new EventArgs());
         }

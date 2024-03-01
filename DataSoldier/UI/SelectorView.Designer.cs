@@ -28,58 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             OKButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            CancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            SelectDataGrid = new UI.Control.CommonDataGrid();
+            ((System.ComponentModel.ISupportInitialize)SelectDataGrid).BeginInit();
             SuspendLayout();
             // 
             // OKButton
             // 
-            OKButton.AutoSize = true;
             OKButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             OKButton.Depth = 0;
+            OKButton.Font = new Font("BIZ UDゴシック", 9F, FontStyle.Regular, GraphicsUnit.Point);
             OKButton.Icon = null;
-            OKButton.Location = new Point(479, 258);
+            OKButton.Location = new Point(638, 487);
             OKButton.MouseState = MaterialSkin.MouseState.HOVER;
             OKButton.Name = "OKButton";
             OKButton.Primary = true;
-            OKButton.Size = new Size(39, 36);
+            OKButton.Size = new Size(180, 40);
             OKButton.TabIndex = 0;
             OKButton.Text = "OK";
             OKButton.UseVisualStyleBackColor = true;
-            OKButton.Click += OKButton_Click_1;
+            OKButton.Click += OKButton_Click;
             // 
-            // materialRaisedButton1
+            // CancelButton
             // 
-            materialRaisedButton1.AutoSize = true;
-            materialRaisedButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialRaisedButton1.Depth = 0;
-            materialRaisedButton1.Icon = null;
-            materialRaisedButton1.Location = new Point(583, 258);
-            materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRaisedButton1.Name = "materialRaisedButton1";
-            materialRaisedButton1.Primary = true;
-            materialRaisedButton1.Size = new Size(79, 36);
-            materialRaisedButton1.TabIndex = 1;
-            materialRaisedButton1.Text = "キャンセル";
-            materialRaisedButton1.UseVisualStyleBackColor = true;
-            materialRaisedButton1.Click += CancelButton1_Click;
+            CancelButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            CancelButton.Depth = 0;
+            CancelButton.Font = new Font("BIZ UDゴシック", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CancelButton.Icon = null;
+            CancelButton.Location = new Point(824, 487);
+            CancelButton.MouseState = MaterialSkin.MouseState.HOVER;
+            CancelButton.Name = "CancelButton";
+            CancelButton.Primary = true;
+            CancelButton.Size = new Size(180, 40);
+            CancelButton.TabIndex = 1;
+            CancelButton.Text = "キャンセル";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
+            // 
+            // SelectDataGrid
+            // 
+            SelectDataGrid.AllowUserToAddRows = false;
+            SelectDataGrid.AllowUserToDeleteRows = false;
+            SelectDataGrid.AllowUserToResizeRows = false;
+            SelectDataGrid.BackgroundColor = Color.White;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightGray;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            SelectDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            SelectDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SelectDataGrid.EnableHeadersVisualStyles = false;
+            SelectDataGrid.Location = new Point(12, 74);
+            SelectDataGrid.MultiSelect = false;
+            SelectDataGrid.Name = "SelectDataGrid";
+            SelectDataGrid.ReadOnly = true;
+            SelectDataGrid.RowHeadersVisible = false;
+            SelectDataGrid.RowTemplate.Height = 25;
+            SelectDataGrid.Size = new Size(992, 407);
+            SelectDataGrid.TabIndex = 2;
             // 
             // SelectorView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(materialRaisedButton1);
+            ClientSize = new Size(1016, 539);
+            Controls.Add(SelectDataGrid);
+            Controls.Add(CancelButton);
             Controls.Add(OKButton);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "SelectorView";
             Text = "SelectorViewForm";
+            ((System.ComponentModel.ISupportInitialize)SelectDataGrid).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private MaterialSkin.Controls.MaterialRaisedButton OKButton;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton CancelButton;
+        private UI.Control.CommonDataGrid SelectDataGrid;
     }
 }
