@@ -25,7 +25,7 @@ namespace DataSoldier
 
             var rawAPI = new RawDataRepository();
 
-            var rawType = new RawTypeValue(@RawType.r1_全法令);
+            var rawType = new RawTypeValue(RawType.r1_All);
             var rawListXMLText = rawAPI.GetRawList(rawType.ToCodeValue());
 
             var rawListXML = XDocument.Parse(rawListXMLText);
@@ -67,7 +67,7 @@ namespace DataSoldier
         {
             var rawAPI = new RawDataRepository();
 
-            var rawType = new RawTypeValue(@RawType.r1_全法令);
+            var rawType = new RawTypeValue(RawType.r1_All);
             var rawListXMLText = rawAPI.GetRawList(rawType.ToCodeValue());
 
             var rawListXML = XDocument.Parse(rawListXMLText);

@@ -5,10 +5,10 @@
     /// </summary>
     public enum RawType
     {
-        r1_全法令 = 1,
-        r2_憲法法令 = 2,
-        r3_政令勅令 = 3,
-        r4_府省庁規則 = 4,
+        r1_All = 1,
+        r2_KenpouHourei = 2,
+        r3_SeireiCyokurei = 3,
+        r4_fusyochoKisoku = 4,
     }
 
     /// <summary>
